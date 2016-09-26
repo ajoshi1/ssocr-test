@@ -3,5 +3,8 @@
 1. opencv (`conda install -c https://conda.binstar.org/menpo opencv`)
 1. ssocr (already provided in ssocr-2.16.3 folder)
 
-####Running
-`jupyter notebook`
+####Running the Exploration
+```
+cd exploration
+jupyter notebook
+```
