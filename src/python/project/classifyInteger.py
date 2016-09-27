@@ -5,8 +5,8 @@ import sys
 import os
 
 def get_integer(img_name):
-
-    SSOCR_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../../libs/ssocr')
+    currentPath = os.path.dirname(os.path.abspath(__file__))
+    SSOCR_PATH = os.path.join(currentPath, '../../../libs/ssocr')
 
     # Reading the passed image
     img = cv2.imread(img_name)
@@ -33,6 +33,7 @@ def get_integer(img_name):
     cv2.imwrite('temp_bw_img.png', bw)
 
     result = subprocess.check_output(SSOCR_PATH + ' -T -f white  -d -1 temp_bw_img.png', shell=True)
+    subprocess.call('rm temp_bw_img.png', shell=True)
     return int(result)
 
 def cleanup():
