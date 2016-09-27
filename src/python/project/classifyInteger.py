@@ -2,10 +2,11 @@ import cv2
 import numpy as np
 import subprocess
 import sys
+import os
 
 def get_integer(img_name):
 
-    SSOCR_PATH = '../../../libs/ssocr'
+    SSOCR_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../../libs/ssocr')
 
     # Reading the passed image
     img = cv2.imread(img_name)
