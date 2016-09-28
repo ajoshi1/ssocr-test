@@ -2,8 +2,12 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 import classifyInteger
+import os
 
 app = Flask(__name__)
+
+# Get port from environment variable or choose 9099 as local default
+port = int(os.getenv("PORT", 5000))
 
 @app.route("/")
 def hello():
@@ -16,4 +20,4 @@ def recognize_score():
     return jsonify(score=score)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=port)
