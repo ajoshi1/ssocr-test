@@ -4,21 +4,25 @@ import subprocess
 import sys
 import os
 
-def get_integer(img_name):
-    currentPath = os.path.dirname(os.path.abspath(__file__))
-    SSOCR_PATH = os.path.join(currentPath, '../../../libs/ssocr')
+def get_integer(img_str):
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    SSOCR_PATH = os.path.join(current_path, '../../../libs/ssocr')
 
-    # Reading the passed image
-    img = cv2.imread(img_name)
+    # converting image str (ByteIO) to numpy array
+    np_array = np.fromstring(img_str, np.uint8)
+
+    # decode the nparray to a color image
+    cv_img = cv2.imdecode(np_array, cv2.CV_LOAD_IMAGE_COLOR)
+
     # Adding median blur to the image pixels
-    img = cv2.medianBlur(img,5)
+    img = cv2.medianBlur(cv_img,5)
 
     # define range of required  color in HSV (blue)
-    lower_blue = np.array([55,55,55])
-    upper_blue = np.array([130,255,255])
+    lower_color = np.array([55,55,55])
+    upper_color = np.array([130,255,255])
 
     # Threshold the HSV image to get only blue colors
-    mask = cv2.inRange(img, lower_blue, upper_blue)
+    mask = cv2.inRange(img, lower_color, upper_color)
 
     # Bitwise-AND mask and original image
     res = cv2.bitwise_and(img,img, mask= mask)

@@ -6,6 +6,7 @@ class ClassifyIntegerTest(unittest.TestCase):
 
     def test_get_integer(self):
         """Test that image is correctly classified."""
-        result = classifyInteger.get_integer(os.path.join(os.path.dirname(
-                        os.path.abspath(__file__)), "data/test_three_blue.png"))
+        inputImage = open(os.path.join(os.path.dirname(
+                        os.path.abspath(__file__)), "data/test_three_orange.png"))
+        result = classifyInteger.get_integer(inputImage.read())
         self.assertEqual(result, 3)
