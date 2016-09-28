@@ -6,7 +6,7 @@ import os
 
 def get_integer(img_str):
     current_path = os.path.dirname(os.path.abspath(__file__))
-    SSOCR_PATH = os.path.join(current_path, '../../../libs/ssocr')
+    SSOCR_PATH = os.path.join(current_path, 'libs/ssocr')
 
     # converting image str (ByteIO) to numpy array
     np_array = np.fromstring(img_str, np.uint8)

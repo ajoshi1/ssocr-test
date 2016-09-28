@@ -1,5 +1,5 @@
 name: score-keeper 
 dependencies:
   - flask=0.11.1
-  - numpy=1.11.1
-  - opencv=2.4.11
+  - numpy
+  - opencv
