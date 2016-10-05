@@ -1,5 +1,4 @@
 ---
 applications:
   - name: score-keeper 
-    buildpack: python_buildpack
     command: python controller.py
